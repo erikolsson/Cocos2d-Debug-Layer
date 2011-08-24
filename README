@@ -1,0 +1,10 @@
+Debug layer for Cocos2d.
+
+Usage:
+CocosDebugLayer *debugLayer = [CocosDebugLayer node];
+[self addChild:debugLayer z:10000];
+
+
+Post messages like this:
+NSString *message = [NSString stringWithFormat:@"New value: %f", value];
+[[NSNotificationCenter defaultCenter] postNotificationName:@"LogMessage" object:message];
