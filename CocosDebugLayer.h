@@ -12,4 +12,5 @@
     NSMutableArray *logMessages;
 }
 -(void)logMessage:(NSString*)message;
+@property CGFloat fixedY;
 @end
