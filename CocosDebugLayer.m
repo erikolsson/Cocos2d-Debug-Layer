@@ -10,7 +10,7 @@
 
 
 @implementation CocosDebugLayer
-
+@synthesize fixedY=_fixedY;
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -24,7 +24,7 @@
         logMessages = [[NSMutableArray alloc] init];
         CCLayerColor *background = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 150)];
         [self addChild:background];
-        self.position = CGPointMake(0, 460);
+        self.position = CGPointMake(0, _fixedY);
         self.isTouchEnabled = YES;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logMessage:) name:@"LogMessage" object:nil];
@@ -73,7 +73,7 @@
     CGPoint position = [self convertTouchToNodeSpace:touch];
     CGPoint worldPos = [self convertToWorldSpace:position];
     CGPoint newPos = CGPointMake(0, worldPos.y-20);
-    if(newPos.y > 460) newPos.y = 460;
+    if(newPos.y > _fixedY) newPos.y = _fixedY;
     if(newPos.y < 0) newPos.y = 0;
     
     self.position = newPos;
